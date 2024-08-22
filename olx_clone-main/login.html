@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+    }
+    .nav {
+      display: flex;
+      padding: 10px 50px;
+      gap: 20px;
+      align-items: center;
+      height: 80px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      justify-content: center;
+      background-color: white;
+      color: rgb(33, 33, 33);
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+    .nav select,
+    .nav input,
+    .nav button {
+      padding: 10px 20px;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      background-color: white;
+      color: rgb(33, 33, 33);
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    }
+    .nav a {
+      color: rgb(33, 33, 33);
+
+      font-weight: 600;
+      padding: 5px 15px;
+    }
+    .search {
+      flex-grow: 2;
+      display: flex;
+      justify-content: center;
+      max-width: 900px;
+      gap: 10px;
+    }
+
+    .search input {
+      flex-grow: 1;
+    }
+    .header {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 80px;
+      padding: 10px;
+      align-items: center;
+      font-weight: 600;
+      background-color: white;
+      color: rgb(33, 33, 33);
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header p {
+      padding: 5px 15px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .header select {
+      padding: 5px 15px;
+      border-radius: 4px;
+    }
+    .header p:hover {
+      background: white;
+      color: black;
+    }
+    .login-logout {
+      display: flex;
+      align-items: center;
+    }
+    /* nav */
+    #register {
+      display: none;
+    }
+    #register_form {
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin: 50px auto;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+      padding: 30px 20px;
+      border-radius: 8px;
+    }
+    #login {
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin: 50px auto;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+      padding: 30px 20px;
+      border-radius: 8px;
+    }
+    #login_form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    #login input,
+    #register input {
+      padding: 15px 20px;
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    }
+    #create_account {
+      text-align: center;
+      font-size: 14px;
+      color: green;
+    }
+    #alert {
+      /* height: 100px; */
+      width: 400px;
+      right: 100%;
+      position: fixed;
+      top: 10px;
+      z-index: 100;
+      border-radius: 4px;
+      font-size: 18px;
+      padding: 20px;
+      font-weight: 600;
+      /* display: none; */
+      transition: right 1s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    #alert img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .warning {
+      color: #58151c;
+      background: #f8d7da;
+      border: #f1aeb5;
+    }
+    .success {
+      color: #0a3622;
+      background: #d1e7dd;
+      border: #a3cfbb;
+    }
+    @media only screen and (max-width: 768px) {
+      .nav {
+        /* background-color: rgb(175, 30, 30); */
+        display: grid;
+        grid-template-columns: 40px auto;
+        height: auto;
+        padding: 10px 20px;
+      }
+      .nav > h3 {
+        display: none;
+      }
+
+      .loc-box {
+        display: none;
+      }
+      .login-logout {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+      .cont {
+        display: grid;
+        grid-template-columns: 100%;
+        gap: 20px;
+        margin: 20px auto;
+        width: 80%;
+        justify-content: center;
+      }
+      .header {
+        display: none;
+      }
+      .banner {
+        display: none;
+      }
+      .footer {
+        grid-template-columns: 100%;
+      }
+      #alert {
+        width: calc(100% - 20px);
+      }
+      #alert img {
+        display: none;
+      }
+      #login {
+        width: 100%;
+      }
+      #register_form {
+        width: 100%;
+      }
+    }
+  </style>
+  <body>
+    <!-- nav -->
+    <div class="nav">
+      <div class="logo"><a href="index.html">Olx</a></div>
+      <div class="loc-box">
+        <select name="" id="location-filter">
+          <option value="">location</option>
+          <option value="kerala">Kerala</option>
+          <option value="kolkata">Kolkata</option>
+        </select>
+      </div>
+      <div class="search">
+        <input
+          type="text"
+          placeholder="Find Cars, Mobile Phones and more...."
+          id="searchinp"
+        />
+        <button id="searchbtn">🔍</button>
+      </div>
+      <h3>ENGLISH</h3>
+    </div>
+    <!-- header -->
+    <div class="header">
+      <select name="" id="category_select">
+        <option value="All">All Categories</option>
+        <option value="car">Car</option>
+        <option value="moto">Motor Cycle</option>
+        <option value="mobile">Mobile phone</option>
+        <option value="house">Houses & apartment</option>
+        <option value="scooter">Scooter</option>
+        <option value="other vehicles">Commercial_vehicles</option>
+      </select>
+      <p id="cars"><span>🚗</span> Cars</p>
+      <p id="moto"><span>🛵</span> Motorcycle...</p>
+      <p id="mob"><span>📱</span> Mobile Phones</p>
+      <p id="houses"><span>🏡</span> For Sale:Houses & Apartments</p>
+      <p id="scooter"><span>🛵</span> Scooters</p>
+      <p id="vehicles"><span>🚒</span> Commercial & Other Vehicles</p>
+      <p id="fav"><span>🛒</span> My Favourites</p>
+    </div>
+    <p id="alert" class="success"></p>
+    <div id="login">
+      <h2>login Page</h2>
+      <form id="login_form">
+        <input id="login_email" type="text" placeholder="email" />
+        <input id="login_pass" type="text" placeholder="password" />
+        <input type="submit" value="Login" />
+      </form>
+      <h3 id="create_account">Create Account</h3>
+    </div>
+    <div id="register">
+      <form id="register_form">
+        <h2>Sign up</h2>
+        <input id="name" type="text" placeholder="username" required />
+        <input id="email" type="email" placeholder="email" required />
+        <input id="password" type="password" placeholder="password" required />
+        <input type="submit" value="Sign up" />
+      </form>
+    </div>
+  </body>
+</html>
+<script>
+  let register = document.getElementById("register");
+  let register_form = document.getElementById("register_form");
+  let login = document.getElementById("login");
+  let login_form = document.getElementById("login_form");
+  let alertmsg = document.getElementById("alert");
+
+  register_form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let name = document.getElementById("name");
+    let data = {
+      name: name.value,
+      email: email.value,
+      password: password.value,
+    };
+    let userRegistered = JSON.parse(localStorage.getItem("user-registered"));
+    if (userRegistered) {
+      userRegistered.push(data);
+      localStorage.setItem("user-registered", JSON.stringify(userRegistered));
+    } else {
+      localStorage.setItem("user-registered", JSON.stringify([data]));
+    }
+
+    register.style.display = "none";
+    login.style.display = "flex";
+
+    alertmsg.style.right = "10px";
+    alertmsg.innerHTML = `<p>✅ ${name.value} Your Account has been Created Please Login</p>`;
+    alertmsg.classList.remove("warning");
+    alertmsg.classList.add("success");
+    setTimeout(() => {
+      alertmsg.style.right = "100%";
+    }, 4000);
+  });
+
+  login_form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    let email = document.getElementById("login_email");
+    let password = document.getElementById("login_pass");
+
+    let userRegistered = JSON.parse(localStorage.getItem("user-registered"));
+    if (userRegistered) {
+      let filtered_user = userRegistered.find(
+        (user) => user.email == email.value && user.password == password.value
+      );
+      if (filtered_user) {
+        localStorage.setItem("user-logged-in", filtered_user.name);
+        alertmsg.style.right = "10px";
+        alertmsg.innerHTML = `<p>✅ Login Successfull</p> <p>welcome ${filtered_user.name}</p>`;
+        alertmsg.classList.remove("remove");
+        alertmsg.classList.add("success");
+        setTimeout(() => {
+          alertmsg.style.right = "100%";
+          window.location.href = "index.html";
+        }, 3000);
+      } else {
+        alertmsg.style.right = "10px";
+        alertmsg.innerHTML = `<p>❌ Please Enter Correct Email and Password</p>`;
+        alertmsg.classList.add("warning");
+        alertmsg.classList.remove("success");
+        setTimeout(() => {
+          alertmsg.style.right = "100%";
+        }, 4000);
+      }
+    } else {
+      alertmsg.style.right = "10px";
+      alertmsg.innerHTML = `<p>❌ Please Enter Correct Email and Password</p>`;
+      alertmsg.classList.remove("success");
+      alertmsg.classList.add("warning");
+      setTimeout(() => {
+        alertmsg.style.right = "100%";
+      }, 4000);
+    }
+  });
+  let createAccount = document.getElementById("create_account");
+  createAccount.addEventListener("click", function () {
+    console.log("hello");
+    register.style.display = "block";
+    login.style.display = "none";
+  });
+</script>

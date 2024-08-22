@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* nav */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+    }
+    .nav {
+      display: flex;
+      padding: 10px 50px;
+      gap: 20px;
+      align-items: center;
+      height: 80px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      justify-content: center;
+      background-color: white;
+      color: rgb(33, 33, 33);
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+    .nav select,
+    .nav input,
+    .nav button , .header select {
+      padding: 10px 20px;
+      font-weight: 700;
+      border: none;
+      border-radius: 4px;
+      background-color: white;
+      color: rgb(33, 33, 33);
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    }
+    .nav a {
+
+      color: rgb(33, 33, 33);
+
+      font-weight: 600;
+      padding: 5px 15px;
+    }
+    .search {
+      flex-grow: 2;
+      display: flex;
+      justify-content: center;
+      max-width: 900px;
+      gap: 10px;
+    }
+
+    .search input {
+      flex-grow: 1;
+    }
+    .header {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 80px;
+      padding: 10px;
+      align-items: center;
+      font-weight: 600;
+      background-color: white;
+      color: rgb(33, 33, 33);
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .header p{
+        padding: 5px 15px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .header select{
+        padding: 5px 15px;
+        border-radius: 4px;
+
+    }
+    .header p:hover{
+        background: white;
+        color: black;
+    }
+    .login-logout{
+      display: flex;
+    align-items: center;
+    }
+ 
+    /* nav */
+    body {
+      background-color: #ebf2ff;
+    }
+    .detail_image {
+      width: 60%;
+      margin: 10px auto;
+    }
+
+    .detail_image img {
+      width: 100%;
+    }
+    .product_detail {
+      display: grid;
+      grid-template-columns: 60% calc(40% - 20px);
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .product_desc {
+      background-color: white;
+      padding: 15px;
+      border-radius: 4px;
+    }
+    .product_price {
+      background-color: white;
+      padding: 15px;
+      border-radius: 4px;
+    }
+    .product_Overview {
+      display: grid;
+      grid-template-columns: 60% calc(40% - 20px);
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .product_location {
+      background-color: white;
+      padding: 15px;
+      border-radius: 4px;
+    }
+    .product_seller {
+      background-color: white;
+      padding: 15px;
+      border-radius: 4px;
+    }
+    #abcd {
+      max-height: 550px;
+      object-fit: contain;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      width: 100%;
+      border-radius: 8px;
+    }
+    .detail_image_fix {
+      margin: auto;
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      background-size: cover;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .seller {
+      width: 100%;
+      font-size: 20px;
+      padding: 5px;
+      background: white;
+      margin-top: 10px;
+      font-weight: 600;
+      border: 2px solid #002f34;
+      color: #002f34;
+      border-radius: 4px;
+    }
+    .seller:hover{
+        background-color: #002f34;
+        color: white;
+    }
+    .offer{
+        background-color: #002f34;
+        color: white;
+        
+    }
+    .offer:hover{
+        background-color: white;
+        color: #002f34;
+    }
+    .overview {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      font-size: 20px;
+    }
+/* footer */
+.footer {
+      display: grid;
+      grid-template-columns: repeat(5, 18%);
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      font-weight: 600;
+      background-color: white;
+      color: rgb(33, 33, 33);
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .footer_last {
+      background-color: rgb(0, 0, 0);
+      color: white;
+      display: flex;
+      justify-content: space-around;
+      padding: 8px;
+      font-size: 14px;
+    }
+    .footer_last h5{
+        font-weight: 400;
+    }
+    .cont {
+      display: grid;
+    grid-template-columns: repeat(auto-fit, 22%);
+    gap: 4%;
+    margin: 20px auto;
+    width: 60%;
+    }
+    .card {
+      border-radius: 8px;
+      padding: 20px;
+      cursor: pointer;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      background-color: white;
+      position: relative;
+    }
+    .card:hover {
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+    .card h3 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .box_img img {
+      width: 100%;
+      height: 250px;
+      object-fit: contain;
+      margin: 10px 0px;
+    }
+    .loc_detail {
+      display: flex;
+      justify-content: space-between;
+      color: grey;
+      margin: 10px 0;
+    }
+    .loc_text {
+      width: 60%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .suggest{
+      text-align: center;
+    }
+    .favorites {
+      position: absolute;
+      /* background: red; */
+      /* width: 100%; */
+      /* left: 0; */
+      bottom: 54px;
+      right: 20px;
+    }
+    .favorites h1{
+      text-align: right;
+    }
+    @media only screen and (max-width: 768px) {
+      .nav {
+        /* background-color: rgb(175, 30, 30); */
+        display: grid;
+        grid-template-columns: 40px auto;
+        height: auto;
+        padding: 10px 20px;
+      }
+      .nav > h3{
+        display: none;
+      }
+
+      .loc-box {
+        display: none;
+      }
+      .login-logout{
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+      .cont {
+        display: grid;
+        grid-template-columns: 100%;
+        gap: 20px;
+        margin: 20px auto;
+        width: 80%;
+        justify-content: center;
+      }
+      .header {
+        justify-content: flex-start;
+        margin-top: 109px;
+      }
+      .header p {
+        display: none;
+      }
+      .banner {
+        display: none;
+      }
+      .footer{
+        grid-template-columns: 100%;
+      }
+      #alert{
+        width: calc(100% - 20px);
+      }
+      #alert img{
+        display: none;
+      }
+      .detail_image_fix{
+        width: 80%;
+      }
+      .detail_image{
+        width: 80%;
+      }
+      .product_detail , .product_Overview{
+        grid-template-columns: 100%;
+      }
+    }
+  </style>
+  <body>
+    <!-- nav -->
+    <div class="nav">
+      <div class="logo"><a href="index.html">Olx</a></div>
+      <div class="loc-box">
+        <select name="" id="location-filter">
+          <option value="">location</option>
+          <option value="kerala">Kerala</option>
+          <option value="kolkata">Kolkata</option>
+        </select>
+      </div>
+      <div class="search">
+        <input
+          type="text"
+          placeholder="Find Cars, Mobile Phones and more...."
+          id="searchinp"
+        />
+        <button id="searchbtn">🔍</button>
+      </div>
+      <h3>ENGLISH</h3>
+      <div class="login-logout">
+        <span>👨🏻‍🎓</span>
+        <p id="login-name"></p>
+        <a href="login.html" id="isloggedin"> Login</a>
+      </div>
+    </div>
+    <!-- header -->
+    <div class="header">
+      <select name="" id="category_select">
+        <option value="All">All Categories</option>
+        <option value="car">Car</option>
+        <option value="moto">Motor Cycle</option>
+        <option value="mobile">Mobile phone</option>
+        <option value="house">Houses & apartment</option>
+        <option value="scooter">Scooter</option>
+        <option value="other vehicles">Commercial_vehicles</option>
+      </select>
+      <p id="cars"><span>🚗</span> Cars</p>
+      <p id="moto"><span>🛵</span> Motorcycle...</p>
+      <p id="mob"><span>📱</span> Mobile Phones</p>
+      <p id="houses"><span>🏡</span> For Sale:Houses & Apartments</p>
+      <p id="scooter"><span>🛵</span> Scooters</p>
+      <p id="vehicles"><span>🚒</span> Commercial & Other Vehicles</p>
+      <h5 id="fav"><span>🛒</span> My Favourites</h5>
+    </div>
+
+      <!-- header -->
+    <div id="product_parent"></div>
+    <h1 class="suggest">Suggestions</h1>
+    <div class="cont" id="card_parent"></div>
+  </body>
+
+  <!-- footer -->
+  <div class="footer">
+    <div class="ft-box">
+      <h4>POPULAR LOCATIONS</h4>
+      <p>Kolkata</p>
+      <p>Mumbai</p>
+      <p>Chennai</p>
+      <p>Pune</p>
+    </div>
+    <div class="ft-box">
+      <h4>TRENDING LOCATIONS</h4>
+      <p>Bhubaneshwar</p>
+      <p>Hyderabad</p>
+      <p>Chandigarh.</p>
+      <p>Nashik</p>
+    </div>
+    <div class="ft-box">
+      <h4>ABOUT US</h4>
+      <p>About OLX Group</p>
+      <p>Careers</p>
+      <p>Contact Us</p>
+      <p>OLXPeople</p>
+    </div>
+    <div class="ft-box">
+      <h4>OLX</h4>
+      <p>Help</p>
+      <p>Sitemap</p>
+      <p>Legal & Privacy information</p>
+      <p>Blog</p>
+    </div>
+
+    <div class="ft-box">
+      <h4>FOLLOW US</h4>
+    </div>
+  </div>
+  <!-- last footer -->
+  <div class="footer_last">
+      <h5>Other Countries: Indonesia - Pakistan - South Africa</h5>
+    <h5>All rights reserved © 2006-2023 MOHD ADIL</h5>
+  </div>
+</html>
+<script src="details.js"></script>
